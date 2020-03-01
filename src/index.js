@@ -2,7 +2,7 @@
  * @Author: Yang
  * @Date: 2020-03-01 13:51:15
  * @LastEditors: Yang
- * @LastEditTime: 2020-03-01 16:07:17
+ * @LastEditTime: 2020-03-01 16:16:54
  * @Descripttion:
  * @FilePath: /server-demo/src/index.js
  */
@@ -18,6 +18,7 @@ import { renderToString } from "react-dom/server";
 // React代码在服务器上执行，消耗服务器端的性能
 
 const app = express();
+app.use(express.static("public"));
 const content = renderToString(<Home />);
 
 app.get("/", (req, res) =>
@@ -29,6 +30,7 @@ app.get("/", (req, res) =>
       </head>
       <body>
         ${content}
+        <script src='/index.js'></script>
       </body>
     </html>
     `
