@@ -10,3 +10,4 @@ npm run start
 
 // --watch 自动打包
 npm install nodemon -g
+npm install npm-run-all -g
