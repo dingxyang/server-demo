@@ -2,14 +2,14 @@
  * @Author: Yang
  * @Date: 2020-03-01 13:51:15
  * @LastEditors: Yang
- * @LastEditTime: 2020-03-01 16:25:45
+ * @LastEditTime: 2020-03-01 16:40:40
  * @Descripttion:
- * @FilePath: /server-demo/src/index.js
+ * @FilePath: /server-demo/src/server/index.js
  */
 import express from "express";
-import Home from "./containers/Home";
 import React from "react";
 import { renderToString } from "react-dom/server";
+import Home from "../containers/Home";
 
 // 客户端渲染
 // React代码在浏览器器执行，消耗的是用户浏览器的性能
