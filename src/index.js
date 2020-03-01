@@ -2,7 +2,7 @@
  * @Author: Yang
  * @Date: 2020-03-01 13:51:15
  * @LastEditors: Yang
- * @LastEditTime: 2020-03-01 16:16:54
+ * @LastEditTime: 2020-03-01 16:25:45
  * @Descripttion:
  * @FilePath: /server-demo/src/index.js
  */
@@ -29,7 +29,7 @@ app.get("/", (req, res) =>
         <title>sst</title>
       </head>
       <body>
-        ${content}
+        <div id='root'>${content}</div>
         <script src='/index.js'></script>
       </body>
     </html>
