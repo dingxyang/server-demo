@@ -2,16 +2,14 @@
  * @Author: Yang
  * @Date: 2020-03-01 14:40:34
  * @LastEditors: Yang
- * @LastEditTime: 2020-03-01 14:41:48
+ * @LastEditTime: 2020-03-01 15:28:58
  * @Descripttion:
  * @FilePath: /server-demo/src/containers/Home/index.js
  */
-const React = require("react");
+import React from "react";
 
 const Home = () => {
   return <div>Home</div>;
 };
 
-module.exports = {
-  default: Home
-};
+export default Home;

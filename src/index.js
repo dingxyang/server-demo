@@ -2,24 +2,27 @@
  * @Author: Yang
  * @Date: 2020-03-01 13:51:15
  * @LastEditors: Yang
- * @LastEditTime: 2020-03-01 15:17:56
+ * @LastEditTime: 2020-03-01 15:48:17
  * @Descripttion:
  * @FilePath: /server-demo/src/index.js
  */
-const express = require("express");
+import express from "express";
 const app = express();
 const port = 3000;
-const Home = require("./containers/Home");
+import Home from "./containers/Home";
+import React from "react";
+import { renderToString } from "react-dom/server";
 
+const content = renderToString(<Home />);
 app.get("/", (req, res) =>
   res.send(
     `
     <html>
       <head>
-        <title>AAA</title>
+        <title>sst</title>
       </head>
       <body>
-      <p>hello dxy</p>
+        ${content}
       </body>
     </html>
     `
