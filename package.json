@@ -1,0 +1,22 @@
+{
+  "name": "server-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xyding1993/server-demo.git"
+  },
+  "author": "esun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xyding1993/server-demo/issues"
+  },
+  "homepage": "https://github.com/xyding1993/server-demo#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
