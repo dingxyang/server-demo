@@ -14,26 +14,26 @@ class Home extends React.Component {
       <div>
         <Header />
         {this.queryList()}
-        <button
-          onClick={() => {
-            alert("click");
-          }}
-        >
-          click
-        </button>
+        <div>
+          <button onClick={() => {alert("click")}}>
+            click
+          </button>
+        </div>
       </div>
     );
   }
 
   componentDidMount() {
-    this.props.getHomeList();
+    if(!this.props.newsList.length) {
+      this.props.getHomeList(false)
+    }
   }
 }
 
-Home.loadData = () => {
+Home.loadData = store => {
   // 服务器端渲染之前把数据提前加载好
-}
-
+  return store.dispatch(actionCreator.getHomeList(true));
+};
 
 const mapStateToProps = state => ({
   name: state.home.name,
@@ -41,8 +41,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getHomeList() {
-    dispatch(actionCreator.getHomeList());
+  getHomeList(server) {
+    dispatch(actionCreator.getHomeList(server));
   }
 });
 

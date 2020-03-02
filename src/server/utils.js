@@ -1,19 +1,9 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter, Route } from "react-router-dom";
-import {matchRoutes}  from 'react-router-config';
-import routes from "../Routes";
 import { Provider } from "react-redux";
-import getStore from "../store";
 
-export const render = req => {
-  const store = getStore();
-  // 获取异步数据填充到store
-  // 根据请求路由做判断
-  const matchedRoutes = matchRoutes(routes, req.path);
-
-  console.log(matchedRoutes);
-
+export const render = (store, routes,req) => {
   const content = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
@@ -32,6 +22,9 @@ export const render = req => {
        </head>
        <body>
          <div id='root'>${content}</div>
+         <script>
+         window.content = {state:${JSON.stringify(store.getState())}}
+         </script>
          <script src='/index.js'></script>
        </body>
      </html>
