@@ -6,8 +6,13 @@ import { Provider } from "react-redux";
 import getStore from "../store";
 
 export const render = req => {
+
+  const store = getStore();
+  // 获取异步数据填充到store
+  // 根据请求路由做判断
+
   const content = renderToString(
-    <Provider store={getStore()}>
+    <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
         {Routes}
       </StaticRouter>
