@@ -1,25 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import { connect } from "react-redux";
+import { actionCreator } from "./store";
 
-const Home = ({ name }) => {
-  return (
-    <div>
-      <Header />
-      <p>This is {name}</p>
-      <button
-        onClick={() => {
-          alert("click");
-        }}
-      >
-        click
-      </button>
-    </div>
-  );
-};
+class Home extends React.Component {
+  queryList() {
+    const { newsList } = this.props;
+    return newsList.map(item => <div key={item.id}>{item.title}</div>);
+  }
+
+  render() {
+    return (
+      <div>
+        <Header />
+        {this.queryList()}
+        <button
+          onClick={() => {
+            alert("click");
+          }}
+        >
+          click
+        </button>
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    this.props.getHomeList();
+  }
+}
 
 const mapStateToProps = state => ({
-  name: state.name
+  name: state.home.name,
+  newsList: state.home.newsList
 });
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = dispatch => ({
+  getHomeList() {
+    dispatch(actionCreator.getHomeList());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
