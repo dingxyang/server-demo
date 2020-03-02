@@ -25,14 +25,14 @@ class Home extends React.Component {
 
   componentDidMount() {
     if(!this.props.newsList.length) {
-      this.props.getHomeList(false)
+      this.props.getHomeList()
     }
   }
 }
 
 Home.loadData = store => {
   // 服务器端渲染之前把数据提前加载好
-  return store.dispatch(actionCreator.getHomeList(true));
+  return store.dispatch(actionCreator.getHomeList());
 };
 
 const mapStateToProps = state => ({
@@ -41,8 +41,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getHomeList(server) {
-    dispatch(actionCreator.getHomeList(server));
+  getHomeList() {
+    dispatch(actionCreator.getHomeList());
   }
 });
 
