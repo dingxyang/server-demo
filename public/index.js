@@ -1146,6 +1146,18 @@ eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/i
 
 /***/ }),
 
+/***/ "./src/client/request.js":
+/*!*******************************!*\
+  !*** ./src/client/request.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n  baseURL: \"/\"\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/client/request.js?");
+
+/***/ }),
+
 /***/ "./src/pages/Home/index.js":
 /*!*********************************!*\
   !*** ./src/pages/Home/index.js ***!
@@ -1166,7 +1178,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\nexports.getHomeList = exports.changeHomeList = undefined;\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/pages/Home/store/constants.js\");\n\nvar constants = _interopRequireWildcard(_constants);\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nvar changeHomeList = exports.changeHomeList = function changeHomeList(newsList) {\n    return {\n        type: constants.CHANGE_HOME_LIST,\n        newsList: newsList\n    };\n};\n\nvar getHomeList = exports.getHomeList = function getHomeList(server) {\n    // 浏览器 /api/news.json = http://localhost:3000/api/news.json\n    // 服务器 /api/news.json = 服务器根目录/api/news.json\n    var url = void 0;\n    // 服务端\n    if (server) {\n        url = 'http://localhost:8080/ssr/api/news.json';\n    } else {\n        url = '/api/news.json';\n    }\n    return function (dispatch) {\n        return _axios2.default.get(url).then(function (res) {\n            dispatch(changeHomeList(res.data.data));\n        });\n    };\n};\n\n//# sourceURL=webpack:///./src/pages/Home/store/actionCreator.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getHomeList = exports.changeHomeList = undefined;\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/pages/Home/store/constants.js\");\n\nvar constants = _interopRequireWildcard(_constants);\n\nvar _request = __webpack_require__(/*! ../../../client/request */ \"./src/client/request.js\");\n\nvar _request2 = _interopRequireDefault(_request);\n\nvar _request3 = __webpack_require__(/*! ../../../server/request */ \"./src/server/request.js\");\n\nvar _request4 = _interopRequireDefault(_request3);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nvar changeHomeList = exports.changeHomeList = function changeHomeList(newsList) {\n  return {\n    type: constants.CHANGE_HOME_LIST,\n    newsList: newsList\n  };\n};\n\nvar getHomeList = exports.getHomeList = function getHomeList(server) {\n  // 浏览器 /api/news.json = http://localhost:3000/api/news.json\n  // 服务器 /api/news.json = 服务器根目录/api/news.json\n  var request = server ? _request4.default : _request2.default;\n  return function (dispatch) {\n    return request.get(\"/api/news.json\").then(function (res) {\n      dispatch(changeHomeList(res.data.data));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/pages/Home/store/actionCreator.js?");
 
 /***/ }),
 
@@ -1227,6 +1239,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Header = function Header() {\n  return _react2.default.createElement(\n    \"div\",\n    null,\n    _react2.default.createElement(\n      _reactRouterDom.Link,\n      { to: \"/\" },\n      \"Home\"\n    ),\n    _react2.default.createElement(\"br\", null),\n    _react2.default.createElement(\n      _reactRouterDom.Link,\n      { to: \"/login\" },\n      \"login\"\n    )\n  );\n};\n\nexports.default = Header;\n\n//# sourceURL=webpack:///./src/pages/components/Header.js?");
+
+/***/ }),
+
+/***/ "./src/server/request.js":
+/*!*******************************!*\
+  !*** ./src/server/request.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n  baseURL: \"http://47.95.113.63/ssr\"\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/server/request.js?");
 
 /***/ }),
 

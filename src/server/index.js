@@ -8,7 +8,7 @@ import proxy from 'express-http-proxy';
 const app = express();
 app.use(express.static("public"));
 
-app.use('/api',proxy('http://localhost:8080', {
+app.use('/api',proxy('http://47.95.113.63', {
   proxyReqPathResolver: function (req) {
     return '/ssr/api'+req.url;
   }
