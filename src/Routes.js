@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import Home from "./containers/Home";
-import Login from "./containers/Login";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 export default (
   <div>
