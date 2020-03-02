@@ -30,6 +30,11 @@ class Home extends React.Component {
   }
 }
 
+Home.loadData = () => {
+  // 服务器端渲染之前把数据提前加载好
+}
+
+
 const mapStateToProps = state => ({
   name: state.home.name,
   newsList: state.home.newsList
