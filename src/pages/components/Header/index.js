@@ -11,7 +11,7 @@ class Header extends React.Component {
         <Link to="/"> 首页 </Link> <br />
         {login ? (
           <Fragment>
-            <div to="/login"> 翻译列表 </div>
+            <Link to="/translation"> 翻译列表 </Link>
             <br />
             <div onClick={handleLogout}> 退出 </div>
           </Fragment>

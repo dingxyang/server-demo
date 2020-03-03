@@ -1,5 +1,5 @@
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Translation from "./pages/Translation";
 import App from "./App";
 
 export default [
@@ -16,10 +16,11 @@ export default [
         key:'home'
       },
       {
-        path:"/login",
-        component:Login,
+        path:"/translation",
+        component:Translation,
         exact: true,
-        key:'login'
+        loadData:Translation.loadData,
+        key:'translation'
       }
     ]
   },
