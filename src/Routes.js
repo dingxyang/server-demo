@@ -6,7 +6,7 @@ export default [
   {
     path:"/",
     component:App,
-    key:'header',
+    loadData:App.loadData,
     routes: [
       {
         path:"/",

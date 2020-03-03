@@ -10,6 +10,6 @@ const Login = () => {
 };
 
 const mapStateToProps = (state) =>({
-  login:state.login.login
+  login:state.header.login
 })
 export default connect(mapStateToProps)(Login);

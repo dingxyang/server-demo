@@ -15,7 +15,7 @@ app.use('/api',proxy('http://47.95.113.63', {
 }));
 
 app.get("*", (req, res) => {
-  const store = getStore();
+  const store = getStore(req);
   // 获取异步数据填充到store
   // 根据请求路由做判断
   const matchedRoutes = matchRoutes(routes, req.path);
@@ -23,6 +23,7 @@ app.get("*", (req, res) => {
   const promises = [];
   matchedRoutes.forEach(item => {
     if (item.route.loadData) {
+      // 不return请求 promises会有空
       promises.push(item.route.loadData(store));
     }
   });

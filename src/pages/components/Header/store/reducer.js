@@ -9,7 +9,7 @@ export default (state = defaultState, action) => {
     case constants.CHANGE_LOGIN_STATE: {
       const newState = {
         ...state,
-        isLogin : action.isLogin
+        login : action.value
       }
       return newState
     }
