@@ -1,6 +1,7 @@
 import Home from "./pages/Home";
-import Translation from "./pages/Translation";
 import App from "./App";
+import Translation from "./pages/Translation";
+import NotFound from "./pages/Exception/404";
 
 export default [
   {
@@ -21,6 +22,9 @@ export default [
         exact: true,
         loadData:Translation.loadData,
         key:'translation'
+      },
+      {
+        component:NotFound
       }
     ]
   },
