@@ -1,26 +1,26 @@
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import App from "./App";
 
 export default [
   {
     path:"/",
-    component:Home,
-    exact: true,
-    loadData:Home.loadData,
-    key:'home',
-    // routes: [
-    //   {
-    //     path:"/tt",
-    //     component:Login,
-    //     exact: true,
-    //     key:'tt'
-    //   }
-    // ]
+    component:App,
+    key:'header',
+    routes: [
+      {
+        path:"/",
+        component:Home,
+        exact: true,
+        loadData:Home.loadData,
+        key:'home'
+      },
+      {
+        path:"/login",
+        component:Login,
+        exact: true,
+        key:'login'
+      }
+    ]
   },
-  {
-    path:"/login",
-    component:Login,
-    exact: true,
-    key:'login'
-  }
 ]

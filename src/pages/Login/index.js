@@ -1,13 +1,15 @@
 import React from "react";
-import Header from "../components/Header";
+import {connect}  from 'react-redux'
 
 const Login = () => {
   return (
     <div>
-      <Header />
       <p>Login</p>
     </div>
   );
 };
 
-export default Login;
+const mapStateToProps = (state) =>({
+  login:state.login.login
+})
+export default connect(mapStateToProps)(Login);
