@@ -1,4 +1,5 @@
 import * as constants from "./constants";
+import config from '../../../config'
 
 export const changeTranslationList = data => ({
   type: constants.CHANGE_TRANS_LIST,
@@ -7,7 +8,7 @@ export const changeTranslationList = data => ({
 
 export const getTranslationList = () => {
   return (dispatch, getState, axiosInstance) => {
-    return axiosInstance.get("/api/tanslations.json?secret=PP87ANTIPIRATE").then(res => {
+    return axiosInstance.get(`/api/tanslations.json?secret=${config.secret}`).then(res => {
       console.log(res.datat)
       // dispatch(changeHomeList(res.data.data));
     }).catch((err)=>{
