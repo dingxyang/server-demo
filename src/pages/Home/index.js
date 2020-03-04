@@ -3,6 +3,14 @@ import { connect } from "react-redux";
 import { actionCreator } from "./store";
 import * as style from  './style.css'
 class Home extends React.Component {
+
+  componentWillMount() {
+    // 服务端
+    if(this.props.staticContext) {
+      this.props.staticContext.css = style._getCss()
+    }
+  }
+
   queryList() {
     const { newsList } = this.props;
     return newsList.map(item => <div key={item.id}>{item.title}</div>);
