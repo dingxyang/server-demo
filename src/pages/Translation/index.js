@@ -20,6 +20,7 @@ class Translation extends React.Component {
         {this.queryList()}
       </div>
     ) : (
+      // 仅限于客户端
       <Redirect to="/"></Redirect>
     );
   }
