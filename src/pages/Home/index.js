@@ -10,7 +10,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={style.test}>
         {this.queryList()}
         <div>
           <button onClick={() => {alert("click")}}>
