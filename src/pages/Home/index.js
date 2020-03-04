@@ -36,11 +36,6 @@ class Home extends React.Component {
   }
 }
 
-Home.loadData = store => {
-  // 服务器端渲染之前把数据提前加载好
-  return store.dispatch(actionCreator.getHomeList());
-};
-
 const mapStateToProps = state => ({
   name: state.home.name,
   newsList: state.home.newsList
@@ -52,4 +47,12 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const ExportHome =connect(mapStateToProps, mapDispatchToProps)(Home);
+
+
+ExportHome.loadData = store => {
+  // 服务器端渲染之前把数据提前加载好
+  return store.dispatch(actionCreator.getHomeList());
+};
+
+export default ExportHome;

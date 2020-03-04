@@ -32,9 +32,7 @@ class Translation extends React.Component {
   }
 }
 
-Translation.loadData = store => {
-  return store.dispatch(actionCreator.getTranslationList());
-};
+
 
 const mapStateToProps = state => ({
   tanslationsList: state.tanslations.tanslationsList,
@@ -47,4 +45,10 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Translation);
+const ExportTranslation = connect(mapStateToProps, mapDispatchToProps)(Translation)
+
+ExportTranslation.loadData = store => {
+  return store.dispatch(actionCreator.getTranslationList());
+};
+
+export default ExportTranslation;
