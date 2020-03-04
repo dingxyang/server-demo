@@ -2,14 +2,9 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "./store";
 import * as style from  './style.css'
-class Home extends React.Component {
+import withStyle  from '../../withStyle'
 
-  componentWillMount() {
-    // 服务端
-    if(this.props.staticContext) {
-      this.props.staticContext.css.push(style._getCss())
-    }
-  }
+class Home extends React.Component {
 
   queryList() {
     const { newsList } = this.props;
@@ -47,7 +42,7 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const ExportHome =connect(mapStateToProps, mapDispatchToProps)(Home);
+const ExportHome =connect(mapStateToProps, mapDispatchToProps)(withStyle(Home, style));
 
 
 ExportHome.loadData = store => {

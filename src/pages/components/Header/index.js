@@ -2,17 +2,12 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { actionCreator } from "../Header/store";
+import withStyle from '../../../withStyle'
 
 import style from './style.css';
 
 class Header extends React.Component {
 
-  componentWillMount() {
-    // 服务端
-    if(this.props.staticContext) {
-      this.props.staticContext.css.push(style._getCss())
-    }
-  }
 
   render() {
     const { login, handleLogin, handleLogout } = this.props;
@@ -49,4 +44,4 @@ const mapDispatch = dispatch => ({
   }
 });
 
-export default connect(mapState, mapDispatch)(Header);
+export default connect(mapState, mapDispatch)(withStyle(Header, style));
