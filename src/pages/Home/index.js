@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "./store";
-
+import * as style from  './style.css'
 class Home extends React.Component {
   queryList() {
     const { newsList } = this.props;
