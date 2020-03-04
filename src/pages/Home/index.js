@@ -7,7 +7,7 @@ class Home extends React.Component {
   componentWillMount() {
     // 服务端
     if(this.props.staticContext) {
-      this.props.staticContext.css = style._getCss()
+      this.props.staticContext.css.push(style._getCss())
     }
   }
 

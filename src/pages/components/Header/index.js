@@ -2,12 +2,23 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { actionCreator } from "../Header/store";
+
+import style from './style.css';
+
 class Header extends React.Component {
+
+  componentWillMount() {
+    // 服务端
+    if(this.props.staticContext) {
+      this.props.staticContext.css.push(style._getCss())
+    }
+  }
+
   render() {
     const { login, handleLogin, handleLogout } = this.props;
 
     return (
-      <div>
+       <div className={style.test}>
         <Link to="/"> 首页 </Link> <br />
         {login ? (
           <Fragment>
