@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "./store";
 import { Redirect } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 class Translation extends React.Component {
   queryList() {
@@ -16,8 +17,14 @@ class Translation extends React.Component {
     const { login } = this.props;
     return login ? (
       <div>
-        translation
-        {this.queryList()}
+        <Helmet>
+          <title>翻译界面</title>
+          <meta name="description" content="翻译界面"></meta>
+        </Helmet>
+        <div>
+          translation
+          {this.queryList()}
+        </div>
       </div>
     ) : (
       // 仅限于客户端
@@ -32,8 +39,6 @@ class Translation extends React.Component {
   }
 }
 
-
-
 const mapStateToProps = state => ({
   tanslationsList: state.tanslations.tanslationsList,
   login: state.header.login
@@ -45,7 +50,10 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const ExportTranslation = connect(mapStateToProps, mapDispatchToProps)(Translation)
+const ExportTranslation = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Translation);
 
 ExportTranslation.loadData = store => {
   return store.dispatch(actionCreator.getTranslationList());

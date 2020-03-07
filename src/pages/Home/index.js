@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "./store";
-import * as style from  './style.css'
-import withStyle  from '../../withStyle'
+import * as style from "./style.css";
+import withStyle from "../../withStyle";
+import { Helmet } from "react-helmet";
 
 class Home extends React.Component {
-
   queryList() {
     const { newsList } = this.props;
     return newsList.map(item => <div key={item.id}>{item.title}</div>);
@@ -14,19 +14,18 @@ class Home extends React.Component {
   render() {
     return (
       <div className={style.test}>
+        <Helmet>
+          <title>My Title</title>
+          <meta name="description" content="My Title"></meta>
+        </Helmet>
         {this.queryList()}
-        <div>
-          <button onClick={() => {alert("click")}}>
-            click
-          </button>
-        </div>
       </div>
     );
   }
 
   componentDidMount() {
-    if(!this.props.newsList.length) {
-      this.props.getHomeList()
+    if (!this.props.newsList.length) {
+      this.props.getHomeList();
     }
   }
 }
@@ -42,8 +41,10 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const ExportHome =connect(mapStateToProps, mapDispatchToProps)(withStyle(Home, style));
-
+const ExportHome = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyle(Home, style));
 
 ExportHome.loadData = store => {
   // 服务器端渲染之前把数据提前加载好
