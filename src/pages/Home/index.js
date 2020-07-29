@@ -5,6 +5,21 @@ import * as style from "./style.css";
 import withStyle from "../../withStyle";
 import { Helmet } from "react-helmet";
 
+const mapStateToProps = state => ({
+  name: state.home.name,
+  newsList: state.home.newsList
+});
+
+const mapDispatchToProps = dispatch => ({
+  getHomeList() {
+    dispatch(actionCreator.getHomeList());
+  }
+});
+
+@connect(
+  mapStateToProps,
+  mapDispatchToProps
+)
 class Home extends React.Component {
   queryList() {
     const { newsList } = this.props;
@@ -30,21 +45,8 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  name: state.home.name,
-  newsList: state.home.newsList
-});
 
-const mapDispatchToProps = dispatch => ({
-  getHomeList() {
-    dispatch(actionCreator.getHomeList());
-  }
-});
-
-const ExportHome = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withStyle(Home, style));
+const ExportHome = withStyle(Home, style);
 
 ExportHome.loadData = store => {
   // 服务器端渲染之前把数据提前加载好
